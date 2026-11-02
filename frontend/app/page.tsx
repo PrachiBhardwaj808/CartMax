@@ -134,7 +134,7 @@ export default function LandingPage() {
               </h2>
               <p>
                 Bring your purchases, proof, and next steps together in one place.
-                <br />
+                <br />{" "}
                 Make the next move with a clearer view of your rights.
               </p>
               <div className="landing-hero-ctas">
@@ -568,9 +568,6 @@ export default function LandingPage() {
       </section>
       <section className="landing-final-cta">
         <div className="landing-section">
-          <span className="final-star" aria-hidden="true">
-            ✦
-          </span>
           <SectionIndex
             number="06"
             label="A LITTLE MORE POWER, IN YOUR HANDS"

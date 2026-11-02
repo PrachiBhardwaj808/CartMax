@@ -1,16 +1,79 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ShieldCheck, Menu, X } from "lucide-react";
+
+const landingSections = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "features", label: "The toolkit" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "faq", label: "Questions" },
+];
 
 export function LandingChrome({ children }: { children: React.ReactNode }) {
   const [menu, setMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const sections = [...landingSections]
+      .reverse()
+      .map(({ id }) => document.getElementById(id));
+    let frame: number | null = null;
+    const updateSection = () => {
+      frame = null;
+      const current = sections.find(
+        (section) => section && section.getBoundingClientRect().top <= 140,
+      );
+      setActiveSection(current?.id ?? "home");
+    };
+    const scheduleUpdate = () => {
+      if (frame === null) frame = requestAnimationFrame(updateSection);
+    };
+    updateSection();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!menu) return;
+    headerRef.current
+      ?.querySelector<HTMLAnchorElement>("#landing-navigation a")
+      ?.focus();
+    const dismissOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenu(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const dismissOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenu(false);
+    };
+    const dismissOnBlur = (event: FocusEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenu(false);
+    };
+    document.addEventListener("keydown", dismissOnEscape);
+    document.addEventListener("pointerdown", dismissOutside);
+    document.addEventListener("focusin", dismissOnBlur);
+    return () => {
+      document.removeEventListener("keydown", dismissOnEscape);
+      document.removeEventListener("pointerdown", dismissOutside);
+      document.removeEventListener("focusin", dismissOnBlur);
+    };
+  }, [menu]);
   return (
     <div className="landing-shell">
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <header className="landing-nav">
+      <header className="landing-nav" ref={headerRef}>
         <Link className="landing-brand" href="/" aria-label="Hackops home">
           <span className="brand-mark-circle">
             <ShieldCheck size={20} strokeWidth={2.2} />
@@ -20,24 +83,21 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
           </span>
         </Link>
         <nav
+          id="landing-navigation"
           aria-label="Landing page navigation"
           className={menu ? "landing-nav-links is-open" : "landing-nav-links"}
         >
-          <a className="is-active" href="#home" onClick={() => setMenu(false)}>
-            Home
-          </a>
-          <a href="#about" onClick={() => setMenu(false)}>
-            About
-          </a>
-          <a href="#features" onClick={() => setMenu(false)}>
-            The toolkit
-          </a>
-          <a href="#how-it-works" onClick={() => setMenu(false)}>
-            How it works
-          </a>
-          <a href="#faq" onClick={() => setMenu(false)}>
-            Questions
-          </a>
+          {landingSections.map(({ id, label }) => (
+            <a
+              key={id}
+              className={activeSection === id ? "is-active" : undefined}
+              aria-current={activeSection === id ? "location" : undefined}
+              href={`#${id}`}
+              onClick={() => setMenu(false)}
+            >
+              {label}
+            </a>
+          ))}
           <Link href="/research" onClick={() => setMenu(false)}>
             Research
           </Link>
@@ -54,9 +114,11 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
             Open workspace <ArrowUpRight size={15} />
           </Link>
           <button
+            ref={menuButtonRef}
             className="landing-menu-button"
             aria-label={menu ? "Close navigation" : "Open navigation"}
             aria-expanded={menu}
+            aria-controls="landing-navigation"
             onClick={() => setMenu(!menu)}
           >
             {menu ? <X size={22} /> : <Menu size={22} />}

@@ -24,7 +24,7 @@ export function RiskRadar({ values }: { values: number[] }) {
           key={value}
           points={labels.map((_, i) => point(i, value).join(",")).join(" ")}
           fill="none"
-          stroke="#E1EBE2"
+          stroke="var(--radar-grid, #E1EBE2)"
           strokeWidth="1.2"
         />
       ))}
@@ -35,14 +35,14 @@ export function RiskRadar({ values }: { values: number[] }) {
           y1="145"
           x2={point(i, 100)[0]}
           y2={point(i, 100)[1]}
-          stroke="#E1EBE2"
+          stroke="var(--radar-grid, #E1EBE2)"
           strokeWidth="1.2"
         />
       ))}
       <polygon
         points={values.map((value, i) => point(i, value).join(",")).join(" ")}
-        fill="rgba(79, 157, 105, 0.22)"
-        stroke="#4F9D69"
+        fill="var(--radar-fill, rgba(79, 157, 105, 0.22))"
+        stroke="var(--radar-accent, #4F9D69)"
         strokeWidth="2.2"
       />
       {values.map((value, i) => (
@@ -51,7 +51,7 @@ export function RiskRadar({ values }: { values: number[] }) {
           cx={point(i, value)[0]}
           cy={point(i, value)[1]}
           r="4"
-          fill="#4F9D69"
+          fill="var(--radar-accent, #4F9D69)"
           stroke="#FFFFFF"
           strokeWidth="1.5"
         />
@@ -62,7 +62,7 @@ export function RiskRadar({ values }: { values: number[] }) {
           x={point(i, 126)[0]}
           y={point(i, 126)[1] + 4}
           textAnchor="middle"
-          fill="#24352A"
+          fill="var(--radar-label, #24352A)"
           fontSize="10.5"
           fontWeight="500"
         >

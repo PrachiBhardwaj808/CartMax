@@ -260,8 +260,11 @@ test("EvolveAI-inspired landing has working toolkit navigation and expandable FA
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "HACKOPS Consumer Rights" }),
+    page.getByRole("heading", { name: "Hackops consumer rights workspace" }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("banner").getByRole("link", { name: "Open workspace", exact: true }),
+  ).toHaveCount(1);
   await page
     .getByRole("button", { name: "Will Hackops send a notice on my behalf?" })
     .click();
@@ -284,8 +287,20 @@ test("EvolveAI-inspired landing has working toolkit navigation and expandable FA
     fullPage: true,
   });
   await page.getByRole("button", { name: "Open navigation" }).click();
+  await expect(page.getByRole("navigation", { name: "Landing page navigation" })).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Landing page navigation" }).getByRole("link", { name: "Home", exact: true }),
+  ).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused();
+  await expect(page.getByRole("navigation", { name: "Landing page navigation" })).toBeHidden();
+  await page.getByRole("button", { name: "Open navigation" }).click();
   await page.getByRole("link", { name: "The toolkit", exact: true }).click();
   await expect(page).toHaveURL(/#features$/);
+  await expect(
+    page.locator('#landing-navigation a[href="#features"]'),
+  ).toHaveAttribute("aria-current", "location");
+  await expect(page.getByRole("button", { name: "Open navigation" })).toHaveAttribute("aria-expanded", "false");
   await page
     .getByRole("link", { name: "Try product scanner", exact: false })
     .click();

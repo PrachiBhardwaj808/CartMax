@@ -14,7 +14,8 @@
 .landing-main {
   max-width: none;
   margin: 0;
-  padding: 0;
+  /* Keep dashboard breakpoint padding out of the full-width landing page. */
+  padding: 0 !important;
   min-height: 0;
 }
 
@@ -1160,7 +1161,7 @@
 .landing-footer {
   background: #FFFFFF;
   border-top: 1px solid #E7E1ED;
-  padding: 70px 30px 40px;
+  padding: 48px 30px 24px;
 }
 
 .landing-footer-top {
@@ -1169,7 +1170,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
   gap: 40px;
-  padding-bottom: 50px;
+  padding-bottom: 28px;
   border-bottom: 1px solid #E7E1ED;
 }
 
@@ -1232,7 +1233,7 @@
 
 .landing-footer-bottom {
   max-width: var(--land-width);
-  margin: 30px auto 0;
+  margin: 20px auto 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1444,6 +1445,14 @@
 }
 
 @media (max-width: 900px) {
+  .landing-footer {
+    padding: 36px 20px 20px;
+  }
+
+  .landing-footer-top {
+    padding-bottom: 24px;
+  }
+
   .landing-hero {
     min-height: 820px;
     padding: 126px 28px 58px !important;

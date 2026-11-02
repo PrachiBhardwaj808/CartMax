@@ -1,6 +1,6 @@
 # Hackops-CR: AI-Powered Consumer Rights Platform
 
-> **Deep Abyss + Frosted Slate Bento Grid + Glassmorphic Editorial Architecture**
+> **Warm White + Violet Editorial Landing Page and Consumer Workspace**
 > An autonomous, full-stack consumer advocacy system designed to protect everyday shoppers from unfair adhesion contracts, lost warranty receipts, hazardous products, and denied warranty claims.
 
 ---
@@ -40,7 +40,9 @@ To connect the browser UI, copy `frontend/.env.example` to `frontend/.env.local`
 | `/warranty-vault` | Product passports, receipt storage, and warranty request drafts |
 | `/research` | Searchable source library |
 
-The UI uses the approved Deep Abyss / Frosted Slate / Electric Cobalt / Laser Cyan palette. Inter and JetBrains Mono fonts are bundled locally.
+The current UI uses the warm-white (`#FAF9FD`) and violet (`#5B2BE7`) design introduced by the landing-page refresh, with white cards and muted supporting text. Inter and JetBrains Mono fonts are bundled locally.
+
+The landing page uses a full-width layout without inheriting dashboard padding on mobile. Its footer has compact spacing between the navigation columns and copyright row, with 24 px of bottom padding on desktop and 20 px on tablet/mobile. The footer meets the bottom of the page without an extra blank gap. Layout was checked at 390 px, 768 px, and 1440 px widths with no horizontal overflow.
 
 Workspace records persist in localStorage. Uploaded PDF/PNG/JPEG files (up to 10 MB each) are stored in IndexedDB and hashed with WebCrypto SHA-256. Keep original documents: there is no cloud backup. Start with fictional sample records, or choose **Start a fresh workspace** from the workspace menu. Resetting replaces records; clearing site data also removes uploaded files.
 

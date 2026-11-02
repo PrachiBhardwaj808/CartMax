@@ -169,7 +169,7 @@ export default function LandingPage() {
       <section className="landing-section landing-about" id="about">
         <SectionIndex number="01" label="THE HUMAN SIDE OF CONSUMER RIGHTS" />
         <div className="landing-about-grid">
-          <div>
+          <div className="landing-about-copy">
             <h2>
               Serious about your rights.
               <br />

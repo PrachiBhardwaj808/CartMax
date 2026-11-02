@@ -110,17 +110,16 @@ export default function LandingPage() {
         </div>
         <div className="landing-hero-inner">
           <div className="landing-hero-kicker">
-            <span /> CONSUMER FIRST. ALWAYS.
+            <span /> CONSUMER RIGHTS · YOUR PURCHASES, PROTECTED
           </div>
           <div className="landing-wordmark">
-            <h1 aria-label="HACKOPS Consumer Rights">
-              <span className="brand-wordmark-main">CartMax</span>
-              <span className="sr-only">Consumer Rights</span>
+            <h1 aria-label="Hackops consumer rights workspace">
+              <span className="brand-wordmark-main">Hackops</span>
             </h1>
             <span className="wordmark-tag">
-              SIMPLE. SMART.
+              YOUR RIGHTS.
               <br />
-              IN YOUR CORNER.
+              YOUR ADVANTAGE.
             </span>
           </div>
           <div className="hero-side-pill">
@@ -131,16 +130,16 @@ export default function LandingPage() {
               <h2>
                 Small print.
                 <br />
-                Meet <span>big consumer energy.</span>
+                Meet <span>your match.</span>
               </h2>
               <p>
-                Equalizing consumer power through autonomous legal intelligence.
+                Bring your purchases, proof, and next steps together in one place.
                 <br />
-                Your proof, your purchases, and your next move—all in one place.
+                Make the next move with a clearer view of your rights.
               </p>
               <div className="landing-hero-ctas">
                 <Link className="landing-primary" href="/command-center">
-                  Launch command center <ArrowUpRight size={19} />
+                  Open your workspace <ArrowUpRight size={19} />
                 </Link>
                 <a href="#features" className="landing-secondary">
                   Explore the toolkit <ArrowRight size={18} />

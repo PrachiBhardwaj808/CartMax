@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, ShieldCheck, Menu, X, User } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Menu, X } from "lucide-react";
 
 export function LandingChrome({ children }: { children: React.ReactNode }) {
   const [menu, setMenu] = useState(false);
@@ -11,12 +11,12 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <header className="landing-nav">
-        <Link className="landing-brand" href="/" aria-label="CartMax home">
+        <Link className="landing-brand" href="/" aria-label="Hackops home">
           <span className="brand-mark-circle">
             <ShieldCheck size={20} strokeWidth={2.2} />
           </span>
           <span className="brand-text">
-            Cart<strong>Max</strong>
+            Hack<strong>ops</strong>
           </span>
         </Link>
         <nav
@@ -35,6 +35,9 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
           <a href="#how-it-works" onClick={() => setMenu(false)}>
             How it works
           </a>
+          <a href="#faq" onClick={() => setMenu(false)}>
+            Questions
+          </a>
           <Link href="/research" onClick={() => setMenu(false)}>
             Research
           </Link>
@@ -43,15 +46,12 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
             href="/dashboard"
             onClick={() => setMenu(false)}
           >
-            Open CartMax <ArrowUpRight size={15} />
+            Open workspace <ArrowUpRight size={15} />
           </Link>
         </nav>
         <div className="landing-nav-actions">
-          <Link className="landing-login-link" href="/dashboard">
-            <User size={15} /> Sign In
-          </Link>
           <Link className="landing-nav-cta" href="/dashboard">
-            Open CartMax <ArrowUpRight size={15} />
+            Open workspace <ArrowUpRight size={15} />
           </Link>
           <button
             className="landing-menu-button"
@@ -74,7 +74,7 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
                 <ShieldCheck size={20} strokeWidth={2.2} />
               </span>
               <span className="brand-text">
-                Cart<strong>Max</strong>
+                Hack<strong>ops</strong>
               </span>
             </Link>
             <p>
@@ -104,7 +104,7 @@ export function LandingChrome({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <div className="landing-footer-bottom">
-          <span>© 2026 CartMax · All Rights Reserved</span>
+          <span>© 2026 Hackops · All Rights Reserved</span>
           <span>Designed with care for everyday shoppers &amp; families.</span>
           <span>Local-first · Optional backend · USD</span>
         </div>

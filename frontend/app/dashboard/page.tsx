@@ -41,7 +41,7 @@ export default function Overview() {
     <div className="overview-page">
       <div className="overview-welcome">
         <div>
-          <span className="eyebrow">CARTMAX CONSUMER PLATFORM</span>
+          <span className="eyebrow">Hackops CONSUMER PLATFORM</span>
           <h1>
             Your consumer command center.<span className="title-spark">✦</span>
           </h1>

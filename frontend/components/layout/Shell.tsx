@@ -62,14 +62,14 @@ function Chrome({ children }: { children: React.ReactNode }) {
         <Link
           href="/"
           className="brand"
-          aria-label="CartMax home"
+          aria-label="Hackops home"
           onClick={() => setMobile(false)}
         >
           <span className="brand-mark">
             <ShieldCheck size={22} strokeWidth={1.8} />
           </span>
           <span>
-            CartMax
+            Hackops
             <small>CONSUMER PROTECTION</small>
           </span>
         </Link>
@@ -140,7 +140,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
             </Link>
           </div>
           <button className="help-link" onClick={() => setPanel("help")}>
-            <CircleHelp size={17} /> How CartMax helps you{" "}
+            <CircleHelp size={17} /> How Hackops helps you{" "}
             <ArrowUpRight size={13} />
           </button>
           <div className="sidebar-foot">
@@ -165,7 +165,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
             >
               {mobile ? <X size={20} /> : <Menu size={20} />}
             </button>
-            <span>CartMax</span>
+            <span>Hackops</span>
             <span className="breadcrumb-slash">/</span>
             <strong>{active}</strong>
           </div>
@@ -200,7 +200,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
         <footer className="main-footer">
           <span>YOUR PURCHASES. YOUR PROOF. YOUR PEACE OF MIND.</span>
           <span>
-            CartMax <span className="footer-dot">✦</span> Consumer Protection Platform · USD
+            Hackops <span className="footer-dot">✦</span> Consumer Protection Platform · USD
           </span>
         </footer>
       </div>
@@ -267,7 +267,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
       {panel === "notifications" && (
         <Modal
           title="Recent Activity"
-          description="Updates and actions from your CartMax workspace."
+          description="Updates and actions from your Hackops workspace."
           onClose={() => setPanel(null)}
         >
           <div className="activity-list">
@@ -294,7 +294,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
       )}
       {panel === "help" && (
         <Modal
-          title="A Clear Guide to CartMax"
+          title="A Clear Guide to Hackops"
           description="How to get the most out of your consumer protection tools."
           onClose={() => setPanel(null)}
         >

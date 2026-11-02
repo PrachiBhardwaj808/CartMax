@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #F5FAF5;
+  --bg: #FAF9FD;
   --sidebar: #FFFFFF;
   --panel: #FFFFFF;
   --panel-high: #FFFFFF;
-  --border: #E1EBE2;
-  --text: #24352A;
-  --muted: #718074;
-  --soft: #8FA093;
-  --accent: #4F9D69;
-  --positive: #4F9D69;
+  --border: #E7E1ED;
+  --text: #1A1028;
+  --muted: #746D7B;
+  --soft: #8F8799;
+  --accent: #5B2BE7;
+  --positive: #2E7D47;
   --danger: #D9534F;
-  --purple: #4F9D69;
+  --purple: #5B2BE7;
   --font-sans: "Inter Variable", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color-scheme: light;
 }

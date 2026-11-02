@@ -513,7 +513,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="landing-section landing-faq" id="faq">
+      <section className="landing-section landing-faq landing-faq-wrap" id="faq">
         <div>
           <SectionIndex number="05" label="GOOD QUESTIONS. CLEAR ANSWERS." />
           <h2>
@@ -527,7 +527,7 @@ export default function LandingPage() {
             this workspace.
           </p>
         </div>
-        <div className="faq-items">
+        <div className="faq-accordion">
           {questions.map((item, index) => (
             <div
               className={`faq-item ${openQuestion === index ? "faq-open" : ""}`}
@@ -535,22 +535,31 @@ export default function LandingPage() {
             >
               <h3>
                 <button
+                  className="faq-question"
                   aria-expanded={openQuestion === index}
                   aria-controls={`faq-answer-${index}`}
                   onClick={() =>
                     setOpenQuestion(openQuestion === index ? null : index)
                   }
                 >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  {item.title}
-                  {openQuestion === index ? (
-                    <Minus size={18} />
-                  ) : (
-                    <Plus size={18} />
-                  )}
+                  <span className="faq-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="faq-question-title">{item.title}</span>
+                  <span className="faq-icon-pill" aria-hidden="true">
+                    {openQuestion === index ? (
+                      <Minus size={16} />
+                    ) : (
+                      <Plus size={16} />
+                    )}
+                  </span>
                 </button>
               </h3>
-              <div id={`faq-answer-${index}`} hidden={openQuestion !== index}>
+              <div
+                className="faq-answer"
+                id={`faq-answer-${index}`}
+                hidden={openQuestion !== index}
+              >
                 <p>{item.answer}</p>
               </div>
             </div>
@@ -594,9 +603,9 @@ export default function LandingPage() {
 
 function SectionIndex({ number, label }: { number: string; label: string }) {
   return (
-    <div className="landing-section-index">
-      <span>{number}</span>
-      {label}
+    <div className="section-index">
+      <span className="section-index-num">{number}</span>
+      <span>{label}</span>
     </div>
   );
 }
